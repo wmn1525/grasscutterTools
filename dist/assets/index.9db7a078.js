@@ -1,1 +1,0 @@
-import{_ as e,o as r,c}from"./index.cf88aa9a.js";const o={};function n(s,t){return r(),c("h1",null,"\u672A\u5F00\u53D1")}var _=e(o,[["render",n],["__file","D:/Work/GrasscutterTools/src/pages/login/index.vue"]]);export{_ as default};
