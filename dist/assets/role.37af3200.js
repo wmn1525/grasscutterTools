@@ -1,0 +1,1 @@
+import{d as a,o as t,c as _,a as s,_ as o,b as e,F as c}from"./index.eaca010a.js";import{_ as n}from"./startnav.1603b3cf.js";const r={class:"cont"},l=e("div",{class:"selectcom"},[e("h1",null,"\u672A\u5F00\u53D1")],-1),f=a({setup(i){return(m,u)=>(t(),_(c,null,[s(o),e("div",r,[s(n),l])],64))}});export{f as default};
