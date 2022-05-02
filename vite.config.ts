@@ -25,6 +25,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         '@api': resovePath('./src/api'),
       }
     },
+    base: "./",
     // plugins
     plugins: createVitePlugins(isBuild),
 
