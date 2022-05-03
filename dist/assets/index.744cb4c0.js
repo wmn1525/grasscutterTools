@@ -1,0 +1,1 @@
+import{d as a,o as t,c as o,a as e,_ as c,b as s,F as _}from"./index.6dcf6765.js";import{s as n}from"./startnav.7d03a8bc.js";import{c as r}from"./commuse.5a8d855d.js";const m={class:"cont"},i={class:"selectcom"},x=a({setup(d){return(l,p)=>(t(),o(_,null,[e(c),s("div",m,[e(n),s("div",i,[e(r)])])],64))}});export{x as default};
