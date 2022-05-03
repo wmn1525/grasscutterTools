@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import Header from '@/components/Header/index.vue'
 import startnav from './components/startnav.vue'
-import holyrelic from './components/holyrelic.vue'
+import weapon from './components/weapon.vue'
 
 
 </script>
@@ -11,8 +11,7 @@ import holyrelic from './components/holyrelic.vue'
   <div class="cont">
     <startnav />
     <div class="selectcom">
-      <h1>未开发</h1>
-
+      <weapon />
     </div>
   </div>
 

@@ -4,20 +4,22 @@ import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { useMessage } from 'naive-ui'
 
-import monster from './json/monster.json'
+import weapon from './json/weapon.json'
 const { text, isSupported, copy } = useClipboard()
 
 
 
-var value2 = ref(21010101)
-var grade = ref(80)
-var num = ref(10)
+var uid = ref(1)
+var value2 = ref(12510)
+var num = ref(5)
+var grade = ref(90)
+var refined = ref(5)
 
 const value = computed(() => {
-  return `/spawn ${value2.value} ${grade.value} ${num.value}`
+  return `/give ${uid.value} ${value2.value} ${num.value} ${grade.value} ${refined.value}`
 })
 const options = reactive(
-  monster
+  weapon
 )
 const message = useMessage()
 
@@ -37,25 +39,36 @@ function copyvalue() {
 <template>
 
   <div class="commuse">
- 
+    <div class="commuse-item">
+      <div>
+        UID:
+      </div>
+      <n-input v-model:value="uid" type="text" placeholder="" />
+    </div>
 
     <div class="commuse-item">
       <div>
-        怪物:
+        武器:
       </div>
       <n-select v-model:value="value2" filterable :options="options" />
-    </div>
-   <div class="commuse-item">
-      <div>
-        等级:
-      </div>
-      <n-input v-model:value="grade" type="text" placeholder="" />
     </div>
     <div class="commuse-item">
       <div>
         数量:
       </div>
+      <n-input v-model:value="grade" type="text" placeholder="" />
+    </div>
+    <div class="commuse-item">
+      <div>
+        等级:
+      </div>
       <n-input-number v-model:value="num" clearable />
+    </div>
+    <div class="commuse-item">
+      <div>
+        精炼等级:
+      </div>
+      <n-input-number v-model:value="refined" clearable />
     </div>
     <div class="generate">
       <n-input id="input" v-model:value="value" type="text" placeholder="" />
