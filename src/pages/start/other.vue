@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import Header from '@/components/Header/index.vue'
 import startnav from './components/startnav.vue'
-import holyrelic from './components/holyrelic.vue'
+import other from './components/other.vue'
 
 
 </script>
@@ -11,8 +11,7 @@ import holyrelic from './components/holyrelic.vue'
   <div class="cont">
     <startnav />
     <div class="selectcom">
-    <h1>未开发</h1>
-
+      <other />
     </div>
   </div>
 
@@ -22,6 +21,7 @@ import holyrelic from './components/holyrelic.vue'
   width: 1366px;
   margin: auto;
   display: flex;
+
   .selectcom {
     width: 1000px;
   }

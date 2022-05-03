@@ -4,22 +4,21 @@ import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { useMessage } from 'naive-ui'
 
-import weapon from './json/weapon.json'
+import role from './json/role.json'
+
 const { text, isSupported, copy } = useClipboard()
 
 
 
-var uid = ref(1)
-var value2 = ref(12510)
-var num = ref(5)
-var grade = ref(90)
-var refined = ref(5)
+
+var value2 = ref()
+var num = ref()
 
 const value = computed(() => {
-  return `/give ${uid.value} ${value2.value} ${num.value} ${grade.value} ${refined.value}`
+  return `/setstats ${value2.value} ${num.value}`
 })
 const options = reactive(
-  weapon
+  role
 )
 const message = useMessage()
 
@@ -39,36 +38,21 @@ function copyvalue() {
 <template>
 
   <div class="commuse">
+    <div class="title">
+      直接修改当前角色的面板
+    </div>
     <div class="commuse-item">
       <div>
-        UID:
+        属性:
       </div>
-      <n-input v-model:value="uid" type="text" placeholder="" />
+      <n-select v-model:value="value2" :options="options" placeholder=""/>
     </div>
 
     <div class="commuse-item">
       <div>
-        武器:
+        数值:
       </div>
-      <n-select v-model:value="value2" filterable :options="options" />
-    </div>
-    <div class="commuse-item">
-      <div>
-        数量:
-      </div>
-      <n-input v-model:value="grade" type="text" placeholder="" />
-    </div>
-    <div class="commuse-item">
-      <div>
-        等级:
-      </div>
-      <n-input-number v-model:value="num" clearable />
-    </div>
-    <div class="commuse-item">
-      <div>
-        精炼等级:
-      </div>
-      <n-input-number v-model:value="refined" clearable />
+       <n-input v-model:value="num" type="text" placeholder="" />
     </div>
     <div class="generate">
       <n-input id="input" v-model:value="value" type="text" placeholder="" />
@@ -83,6 +67,12 @@ function copyvalue() {
 .commuse {
   width: 500px;
   margin: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 16px;
+  margin: 10px 0;
 }
 
 .commuse-item {

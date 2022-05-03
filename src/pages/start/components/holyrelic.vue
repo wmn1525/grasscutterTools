@@ -124,7 +124,7 @@ function copyvalue() {
   </div>
 
 </template>
-<style lang="less">
+<style lang="less" scoped>
 .commuse {
   width: 500px;
   margin: auto;

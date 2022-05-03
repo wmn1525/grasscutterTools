@@ -18,6 +18,14 @@ const value = computed(() => {
 const options = reactive(
   [
     {
+      "label": "角色经验",
+      "value": 101
+    },
+    {
+      "label": "冒险阅历",
+      "value": 102
+    },
+    {
       label: "原石",
       value: 201,
     },
@@ -80,14 +88,14 @@ function copyvalue() {
       <div>
         物品:
       </div>
-      <n-select v-model:value="value2" :options="options" />
+      <n-select filterable v-model:value="value2" :options="options" />
     </div>
 
     <div class="commuse-item">
       <div>
         数量:
       </div>
-      <n-input-number v-model:value="num" clearable />
+      <n-input-number  v-model:value="num" clearable />
     </div>
     <div class="generate">
       <n-input id="input" v-model:value="value" type="text" placeholder="" />
@@ -95,10 +103,16 @@ function copyvalue() {
         复制
       </n-button>
     </div>
+
+    
+  </div>
+
+  <div>
+    
   </div>
 
 </template>
-<style lang="less">
+<style lang="less" scoped>
 .commuse {
   width: 500px;
   margin: auto;

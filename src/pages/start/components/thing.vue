@@ -3,23 +3,35 @@
 import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { useMessage } from 'naive-ui'
-
-import weapon from './json/weapon.json'
+import thing from './json/thing.json'
 const { text, isSupported, copy } = useClipboard()
 
 
 
-var uid = ref(1)
-var value2 = ref(12510)
-var num = ref(5)
-var grade = ref(90)
-var refined = ref(5)
+
+
+var value2 = ref()
+var value3 = ref("/give")
+var uid = ref()
+var num = ref()
 
 const value = computed(() => {
-  return `/give ${uid.value} ${value2.value} ${num.value} ${grade.value} ${refined.value}`
+  return `${value3.value} ${uid.value} ${value2.value} ${num.value}`
 })
 const options = reactive(
-  weapon
+  thing
+)
+const options2 = reactive(
+  [
+    {
+      "label": "给予指定玩家一定数量的物品",
+      "value": "/give"
+    },
+    {
+      "label": "在指定玩家周围掉落指定物品",
+      "value": "/drop"
+    },
+  ]
 )
 const message = useMessage()
 
@@ -45,30 +57,25 @@ function copyvalue() {
       </div>
       <n-input v-model:value="uid" type="text" placeholder="" />
     </div>
+    <div class="commuse-item">
+      <div>
+        获取方式:
+      </div>
+      <n-select filterable v-model:value="value3" :options="options2" />
+    </div>
 
     <div class="commuse-item">
       <div>
-        武器:
+        物品:
       </div>
-      <n-select v-model:value="value2" filterable :options="options" />
+      <n-select filterable v-model:value="value2" :options="options" />
     </div>
+
     <div class="commuse-item">
       <div>
         数量:
       </div>
-      <n-input v-model:value="grade" type="text" placeholder="" />
-    </div>
-    <div class="commuse-item">
-      <div>
-        等级:
-      </div>
       <n-input-number v-model:value="num" clearable />
-    </div>
-    <div class="commuse-item">
-      <div>
-        精炼等级:
-      </div>
-      <n-input-number v-model:value="refined" clearable />
     </div>
     <div class="generate">
       <n-input id="input" v-model:value="value" type="text" placeholder="" />
