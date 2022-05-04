@@ -16,14 +16,7 @@ import weapon from './components/weapon.vue'
   </div>
 
 </template>
-<style lang="less">
-.cont {
-  width: 1366px;
-  margin: auto;
-  display: flex;
 
-  .selectcom {
-    width: 1000px;
-  }
-}
+<style lang="less" scoped>
+@import url('./style.less');
 </style>

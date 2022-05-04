@@ -42,14 +42,14 @@ function copyvalue() {
       直接修改当前角色的面板
     </div>
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         属性:
       </div>
       <n-select v-model:value="value2" :options="options" placeholder=""/>
     </div>
 
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         数值:
       </div>
        <n-input v-model:value="num" type="text" placeholder="" />

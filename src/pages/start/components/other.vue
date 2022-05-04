@@ -29,12 +29,12 @@ const options = reactive(
     {
       title: "重载服务器配置",
       isuse: '均可使用',
-      value: "/position"
+      value: "/reload"
     },
     {
       title: "重启服务端",
       isuse: '均可使用',
-      value: "/position"
+      value: "/restart"
     },
     {
       title: "停止服务器",
@@ -67,7 +67,7 @@ function copyvalue(value: string) {
 
   <div class="commuse">
     <div v-for="(item, index) in options">
-      <div>{{ item.title }}</div>
+      <div class="text-slate-900 dark:text-slate-100">{{ item.title }}</div>
       <div>
         <n-input v-model:value="item.value" type="text" disabled />
       </div>

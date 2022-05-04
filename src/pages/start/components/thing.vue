@@ -52,27 +52,27 @@ function copyvalue() {
 
   <div class="commuse">
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         UID:
       </div>
       <n-input v-model:value="uid" type="text" placeholder="" />
     </div>
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         获取方式:
       </div>
       <n-select filterable v-model:value="value3" :options="options2" />
     </div>
 
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         物品:
       </div>
       <n-select filterable v-model:value="value2" :options="options" />
     </div>
 
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         数量:
       </div>
       <n-input-number v-model:value="num" clearable />

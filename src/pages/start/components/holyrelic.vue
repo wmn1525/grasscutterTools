@@ -72,47 +72,49 @@ function copyvalue() {
 
   <div class="commuse">
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         UID:
       </div>
       <n-input v-model:value="uid" type="text" placeholder="" />
     </div>
 
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         圣遗物:
       </div>
       <n-select v-model:value="holyrelicnamevalue" filterable placeholder="选择圣遗物" :options="options" />
     </div>
 
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         主属性:
       </div>
       <n-select v-model:value="holyrelicnmainvalue" filterable placeholder="选择圣遗物主属性" :options="options2" />
     </div>
 
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         属性小词条:
       </div>
-      <div class="smallho">
-        <div v-for="(item, index) in options3" :key="index">
-          <n-checkbox v-model:checked="item.isCheck" style="margin-right: 12px" />
-          <div>{{ item.label }} </div>
+
+      <n-scrollbar class="smallho" style="height: 300px;">
+        <div class="smallho-item" v-for="(item, index) in options3" :key="index">
+          <n-checkbox v-model:checked="item.isCheck" style="margin-right: 12px"
+            class="text-slate-900 dark:text-slate-100" />
+          <div class="text-slate-900 dark:text-slate-100">{{ item.label }} </div>
           <div>
-            <n-input-number v-model:value="item.num" :min="1" placeholder="" :show-button="false"/>
+            <n-input-number v-model:value="item.num" :min="1" placeholder="" :show-button="false" />
           </div>
         </div>
-
-      </div>
+      </n-scrollbar>
+    
     </div>
 
     <div class="commuse-item">
-      <div>
+      <div class="text-slate-900 dark:text-slate-100">
         强化等级:
       </div>
-      <n-input-number v-model:value="grade" placeholder="" :min="0" :max="20" :show-button="false"/>
+      <n-input-number v-model:value="grade" placeholder="" :min="0" :max="20" :show-button="false" />
     </div>
 
     <div class="generate">
@@ -152,14 +154,11 @@ function copyvalue() {
 }
 
 .smallho {
-  height: 300px;
-  width: 100%;
-  overflow: auto;
 
-  >div {
+  .smallho-item {
     display: flex;
     justify-content: space-between;
-
+    width: 90%;
     >div {
       &:nth-child(3) {
         width: 80px;

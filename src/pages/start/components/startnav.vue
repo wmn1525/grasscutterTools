@@ -13,9 +13,9 @@ const datav = reactive([
 
 </script>
 <template>
-  <div class="nav">
+  <div class="nav ">
     <div v-for="(item, index) in datav" :key="index">
-      <router-link :to="item.path">
+      <router-link :to="item.path" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">
         {{ item.name }}
       </router-link>
     </div>
