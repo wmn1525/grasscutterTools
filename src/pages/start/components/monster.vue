@@ -14,7 +14,7 @@ var grade = ref(80)
 var num = ref(10)
 
 const value = computed(() => {
-  return `/spawn ${value2.value} ${grade.value} ${num.value}`
+  return `/spawn ${value2.value} ${num.value} ${grade.value}`
 })
 const options = reactive(
   monster
