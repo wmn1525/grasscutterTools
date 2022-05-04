@@ -1,0 +1,1 @@
+import{e as a,d as o,o as t,c,a as e,_,b as s,F as r}from"./index.62b41ae0.js";import{s as m}from"./startnav.d19e20e7.js";import{c as n}from"./commuse.5483aa2c.js";const d={class:"cont"},p={class:"selectcom"},i=o({setup(l){return(u,f)=>(t(),c(r,null,[e(_),s("div",d,[e(m),s("div",p,[e(n)])])],64))}});var h=a(i,[["__scopeId","data-v-0b9d2b24"]]);export{h as default};
