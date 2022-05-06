@@ -45,62 +45,42 @@ const ThemeChange = (val: string | number | boolean) => {
 <template>
   <header class="antialiased bg-white Male text-slate-500 dark:text-slate-400 dark:bg-slate-900">
     <div
-      class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
-    >
+      class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
       <div class="mx-auto max-w-8xl">
-        <div
-          class="px-4 py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10"
-        >
+        <div class="px-4 py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10">
           <div class="relative flex items-center text-2xl sm:text-2xl font-blimone">
-            <router-link
-              to="/"
-              class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200"
-            >GrasscutterTools</router-link>
+            <router-link to="/" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">
+              GrasscutterTools</router-link>
             <div class="relative items-center hidden ml-auto lg:flex">
               <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
-                    <router-link
-                      to="/"
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                    >GithubDemo</router-link>
+                    <a href="https://www.grasscutter.cf/" target="_bank"
+                      class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300">
+                      Grasscutter-docs-zh_CN
+                    </a>
                   </li>
                   <li>
-                    <router-link
-                      to="/"
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                    >Login</router-link>
+
+                    <router-link to="/" class="hover:text-sky-500 dark:hover:text-sky-400">Login</router-link>
                   </li>
                 </ul>
               </nav>
-              <div
-                class="flex items-center pl-6 ml-6 border-l border-slate-200 dark:border-slate-800"
-              >
-                <a-tooltip
-                  :content="
-                    theme === 'light'
-                      ? '设置暗黑主题'
-                      : '设置明亮主题'
-                  "
-                >
-                  <a-button
-                    size="mini"
-                    class="nav-btn"
-                    type="outline"
-                    :shape="'circle'"
-                    @click="toggleTheme"
-                  >
+              <div class="flex items-center pl-6 ml-6 border-l border-slate-200 dark:border-slate-800">
+                <a-tooltip :content="
+                  theme === 'light'
+                    ? '设置暗黑主题'
+                    : '设置明亮主题'
+                ">
+                  <a-button size="mini" class="nav-btn" type="outline" :shape="'circle'" @click="toggleTheme">
                     <template #icon>
                       <icon-moon-fill v-if="theme === 'dark'" />
                       <icon-sun-fill v-else />
                     </template>
                   </a-button>
                 </a-tooltip>
-                <a
-                  href="https://github.com/wmn1525/grasscutterTools"
-                  target="_bank"
-                  class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
-                >
+                <a href="https://github.com/wmn1525/grasscutterTools" target="_bank"
+                  class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300">
                   <SvgIcon name="svg-github" size="small" color="#999999" />
                 </a>
               </div>
@@ -117,19 +97,24 @@ const ThemeChange = (val: string | number | boolean) => {
   color: #334155;
   font-size: 0.875em;
   font-variant-ligatures: none;
+
   code {
     color: #0f172a;
     font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco,
       Consolas, Liberation Mono, Courier New, monospace;
+
     &::before {
       content: "`";
     }
+
     &::after {
       content: "`";
     }
   }
+
   &.dark\:prose-dark {
     color: #94a3b8;
+
     code {
       color: #e2e8f0;
     }

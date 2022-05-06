@@ -82,7 +82,7 @@ function copyvalue() {
       <div class="text-slate-900 dark:text-slate-100">
         圣遗物:
       </div>
-      <n-select v-model:value="holyrelicnamevalue" filterable placeholder="选择圣遗物" :options="options" />
+      <n-cascader v-model:value="holyrelicnamevalue" filterable placeholder="选择圣遗物" :options="options"  check-strategy="child"/>
     </div>
 
     <div class="commuse-item">
