@@ -6,6 +6,9 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('@arco-design/web-vue')['Button']
+    ACascader: typeof import('@arco-design/web-vue')['Cascader']
+    AInput: typeof import('@arco-design/web-vue')['Input']
+    AInputNumber: typeof import('@arco-design/web-vue')['InputNumber']
     ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
     Footer: typeof import('./components/footer/index.vue')['default']
     Header: typeof import('./components/Header/index.vue')['default']
