@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
-import { useMessage } from 'naive-ui'
+import { Message } from '@arco-design/web-vue'
 
 const { text, isSupported, copy } = useClipboard()
 
@@ -55,7 +55,7 @@ const options = reactive([
     value: 224,
   },
 ])
-const message = useMessage()
+const message = Message
 function copyvalue() {
   copy(value.value)
   if (isSupported) {
@@ -93,7 +93,7 @@ function copyvalue() {
       />
     </div>
     <div class="generate">
-      <a-input v-model="value" placeholder="请输入UID" />
+      <a-input v-model="value" placeholder="" />
       <a-button type="outline" @click="copyvalue">复制</a-button>
       <!-- <a-button type="outline" @click="copyvalue">执行</a-button> -->
     </div>

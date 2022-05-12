@@ -2,129 +2,112 @@
 <script setup lang="ts">
 import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
-import { useMessage } from 'naive-ui'
 import holyrelicname from './json/holyrelicname.json'
 import holyrelicnmain from './json/holyrelicnmain.json'
 import holyrelicx from './json/holyrelicnx.json'
+import { Message } from '@arco-design/web-vue'
 const { text, isSupported, copy } = useClipboard()
 
+var uid = ref('')
+var holyrelicnamevalue = ref('')
+var holyrelicnmainvalue = ref('')
 
-
-
-var uid = ref("")
-var holyrelicnamevalue = ref("")
-var holyrelicnmainvalue = ref("")
-
-var grade = ref("0")
+var grade = ref('0')
 var selectedValue = ref()
 var num = ref()
 
 const value = computed(() => {
-
   var xct = ''
-  options3.value.forEach(k => {
+  options3.value.forEach((k) => {
     if (k.isCheck) {
       xct = xct + ` ${k.value},${k.num}`
     }
-  });
-  return `/giveart ${uid.value} ${holyrelicnamevalue.value} ${holyrelicnmainvalue.value}${xct} ${grade.value + 1}`
+  })
+  return `/giveart ${uid.value} ${holyrelicnamevalue.value} ${holyrelicnmainvalue.value}${xct} ${
+    grade.value + 1
+  }`
 })
-const options = reactive(
-  holyrelicname
-)
+const options = reactive(holyrelicname)
 
-const options2 = reactive(
-  holyrelicnmain
-)
+const options2 = reactive(holyrelicnmain)
 
-var holyrelicx1 = holyrelicx.map(k => {
+var holyrelicx1 = holyrelicx.map((k) => {
   const obj = {
     isCheck: false,
     num: 1,
     label: k.label,
-    value: k.value
+    value: k.value,
   }
   return obj
 })
-const options3 = ref(
-  holyrelicx1
-)
+const options3 = ref(holyrelicx1)
 
-
-
-const message = useMessage()
+const message = Message
 
 function copyvalue() {
   copy(value.value)
   if (isSupported) {
-    message.success(
-      `已复制${value.value}`
-    )
+    message.success(`已复制${value.value}`)
   }
-
 }
-
-
-
 </script>
 
 <template>
-
   <div class="commuse">
     <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        UID:
-      </div>
-      <n-input v-model:value="uid" type="text" placeholder="" />
+      <div class="text-slate-900 dark:text-slate-100"> UID: </div>
+      <a-input v-model="uid" placeholder="请输入UID" allow-clear />
     </div>
 
     <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        圣遗物:
-      </div>
-      <n-cascader v-model:value="holyrelicnamevalue" filterable placeholder="选择圣遗物" :options="options"  check-strategy="child"/>
+      <div class="text-slate-900 dark:text-slate-100"> 圣遗物: </div>
+      <a-cascader
+        allow-search
+        v-model="holyrelicnamevalue"
+        :options="options"
+        placeholder="请输入物品"
+        filterable
+      />
     </div>
 
     <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        主属性:
-      </div>
-      <n-select v-model:value="holyrelicnmainvalue" filterable placeholder="选择圣遗物主属性" :options="options2" />
+      <div class="text-slate-900 dark:text-slate-100"> 主属性: </div>
+      <a-cascader
+        allow-search
+        v-model="holyrelicnmainvalue"
+        :options="options2"
+        placeholder="请输入主属性"
+        filterable
+      />
+      <!-- <n-select v-model:value="holyrelicnmainvalue" filterable placeholder="选择圣遗物主属性" :options="options2" /> -->
     </div>
 
     <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        属性小词条:
-      </div>
+      <div class="text-slate-900 dark:text-slate-100"> 属性小词条: </div>
 
-      <n-scrollbar class="smallho" style="height: 300px;">
+      <div class="smallho">
         <div class="smallho-item" v-for="(item, index) in options3" :key="index">
-          <n-checkbox v-model:checked="item.isCheck" style="margin-right: 12px"
-            class="text-slate-900 dark:text-slate-100" />
+          <a-checkbox v-model="item.isCheck"></a-checkbox>
           <div class="text-slate-900 dark:text-slate-100">{{ item.label }} </div>
           <div>
-            <n-input-number v-model:value="item.num" :min="1" placeholder="" :show-button="false" />
+            <a-input-number placeholder="" v-model="item.num" :min="1" />
           </div>
         </div>
-      </n-scrollbar>
-    
+      </div>
     </div>
 
     <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        强化等级:
-      </div>
-      <n-input-number v-model:value="grade" placeholder="" :min="0" :max="20" :show-button="false" />
+      <div class="text-slate-900 dark:text-slate-100"> 强化等级: </div>
+
+      <a-input-number placeholder="" v-model="grade" :min="0" :max="20" />
     </div>
 
     <div class="generate">
-      <n-input id="input" v-model:value="value" type="text" placeholder="" />
-      <n-button type="tertiary" @click="copyvalue">
-        复制
-      </n-button>
+      <a-input v-model="value" placeholder="" />
+      <a-button type="outline" @click="copyvalue">复制</a-button>
+      <!-- <a-button type="outline" @click="copyvalue">执行</a-button> -->
     </div>
   </div>
-
 </template>
 <style lang="less" scoped>
 .commuse {
@@ -138,7 +121,7 @@ function copyvalue() {
   color: #000;
   margin: 18px 0;
 
-  >div {
+  > div {
     &:nth-child(1) {
       width: 150px;
       text-align: right;
@@ -154,12 +137,16 @@ function copyvalue() {
 }
 
 .smallho {
-
+  height: 300px;
+  width: 100%;
+  overflow-y: auto;
   .smallho-item {
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 90%;
-    >div {
+    > div {
       &:nth-child(3) {
         width: 80px;
       }

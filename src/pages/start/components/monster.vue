@@ -2,12 +2,10 @@
 <script setup lang="ts">
 import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
-import { useMessage } from 'naive-ui'
+import { Message } from '@arco-design/web-vue'
 
 import monster from './json/monster.json'
 const { text, isSupported, copy } = useClipboard()
-
-
 
 var value2 = ref(21010101)
 var grade = ref(80)
@@ -16,55 +14,49 @@ var num = ref(10)
 const value = computed(() => {
   return `/spawn ${value2.value} ${num.value} ${grade.value}`
 })
-const options = reactive(
-  monster
-)
-const message = useMessage()
+const options = reactive(monster)
+const message = Message
 
 function copyvalue() {
   copy(value.value)
   if (isSupported) {
-    message.success(
-      `已复制${value.value}`
-    )
+    message.success(`已复制${value.value}`)
   }
-
 }
-
-
 </script>
 
 <template>
-
   <div class="commuse">
- 
-
     <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        怪物:
-      </div>
-      <n-select v-model:value="value2" filterable :options="options" />
-    </div>
-   <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        等级:
-      </div>
-      <n-input v-model:value="grade" type="text" placeholder="" />
+      <div class="text-slate-900 dark:text-slate-100"> 怪物: </div>
+      <a-cascader allow-search v-model="value2" :options="options" placeholder="" filterable />
     </div>
     <div class="commuse-item">
-      <div class="text-slate-900 dark:text-slate-100">
-        数量:
-      </div>
-      <n-input-number v-model:value="num" clearable />
+      <div class="text-slate-900 dark:text-slate-100"> 等级: </div>
+      <a-input-number
+        v-model="grade"
+        placeholder="请输入数量"
+        mode="button"
+        size="large"
+        class="input-demo"
+      />
+    </div>
+    <div class="commuse-item">
+      <div class="text-slate-900 dark:text-slate-100"> 数量: </div>
+      <a-input-number
+        v-model="num"
+        placeholder="请输入数量"
+        mode="button"
+        size="large"
+        class="input-demo"
+      />
     </div>
     <div class="generate">
-      <n-input id="input" v-model:value="value" type="text" placeholder="" />
-      <n-button type="tertiary" @click="copyvalue">
-        复制
-      </n-button>
+      <a-input v-model="value" placeholder="" />
+      <a-button type="outline" @click="copyvalue">复制</a-button>
+      <!-- <a-button type="outline" @click="copyvalue">执行</a-button> -->
     </div>
   </div>
-
 </template>
 <style lang="less" scoped>
 .commuse {
@@ -78,7 +70,7 @@ function copyvalue() {
   color: #000;
   margin: 18px 0;
 
-  >div {
+  > div {
     &:nth-child(1) {
       width: 150px;
       text-align: right;

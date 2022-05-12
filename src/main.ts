@@ -10,8 +10,7 @@ import '@arco-design/web-vue/dist/arco.css';
 // 支持SVG
 import 'virtual:svg-icons-register'
 
-import naive from 'naive-ui'
-
+import { Message } from '@arco-design/web-vue';
 const app = createApp(App)
-app.use(naive)
+Message._context = app._context;
 app.use(router).use(ArcoVue).use(ArcoVueIcon).use(piniaStore).mount('#app')

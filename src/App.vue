@@ -1,14 +1,9 @@
 <template>
-  <n-config-provider :theme="apptheme">
-    <n-message-provider>
-      <router-view></router-view>
-    </n-message-provider>
-  </n-config-provider>
+  <router-view></router-view>
 </template>
 <script setup lang="ts">
-import { title } from 'process';
+import { title } from 'process'
 import { useAppStore } from './store/modules/app'
-
 
 import { ref, watch } from 'vue'
 import { darkTheme } from 'naive-ui'
@@ -40,7 +35,7 @@ watch(
   () => appStore.theme,
   () => {
     const theme: string = appStore.theme
-    if (theme == "dark") {
+    if (theme == 'dark') {
       apptheme.value = darkTheme
     } else {
       apptheme.value = null
@@ -48,7 +43,7 @@ watch(
   },
   {
     immediate: true,
-  }
+  },
 )
 </script>
 
