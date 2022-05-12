@@ -1,13 +1,27 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import Header from '@/components/Header/index.vue'
 import commuse from './components/commuse.vue'
-import { useWebSocket } from '@vueuse/core'
+import { Message } from '@arco-design/web-vue'
+import { useAppStore, useUserStore } from '@/store'
+const appStore = useAppStore()
 
 var wss = ref('')
-
 function login() {
-  const { status, data, send, open, close } = useWebSocket(wss.value)
+  if (wss.value) {
+    appStore.socketConnect(wss.value)
+  } else {
+    Message.error(`地址不正确`)
+  }
+}
+
+function send() {
+  const send_msg = {
+    type: 'CMD',
+    data: 'g',
+  }
+  const send_msg_str = JSON.stringify(send_msg)
+  appStore.socketSend(send_msg_str)
 }
 </script>
 <template>
@@ -25,11 +39,14 @@ function login() {
     <div>
       <div class="commuse-item">
         <div class="text-slate-900 dark:text-slate-100"> wss: </div>
-        <n-input v-model:value="wss" clearable placeholder="请从控制台获取" />
+        <a-input v-model="wss" clearable placeholder="请从控制台获取" />
       </div>
       <div class="title">
-        <n-button type="tertiary" @click="login"> 登录 </n-button>
+        <a-button type="outline" @click="login"> 登录 </a-button>
       </div>
+    </div>
+    <div>
+      <a-button type="outline" @click="send"> send </a-button>
     </div>
   </div>
 </template>
