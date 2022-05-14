@@ -3,8 +3,8 @@
 import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import thing from './json/thing.json'
-const { text, isSupported, copy } = useClipboard()
 import { Message } from '@arco-design/web-vue'
+const { text, isSupported, copy } = useClipboard()
 
 var value2 = ref()
 var value3 = ref('/give')
@@ -53,7 +53,6 @@ function copyvalue() {
         v-model="value2"
         :options="options"
         placeholder="请输入物品"
-        :virtual-list-props="{ height: 200 }"
         filterable
       />
     </div>

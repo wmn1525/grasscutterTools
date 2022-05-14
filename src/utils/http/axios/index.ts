@@ -113,5 +113,5 @@ export type { AxiosInstance, AxiosResponse };
  * @return {Promise}
  */
 // export const login = (params: ILogin): Promise<IResponse> => {
-//     return axiosInstance.post('user/login', params).then(res => res.data);
+//     return axiosInstance.post('user', params).then(res => res.data);
 // };

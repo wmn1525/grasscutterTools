@@ -11,7 +11,7 @@ import commuse from './components/commuse.vue'
   <div class="cont">
     <startnav />
     <div class="selectcom">
-      <commuse />
+      <router-view></router-view>
     </div>
   </div>
 

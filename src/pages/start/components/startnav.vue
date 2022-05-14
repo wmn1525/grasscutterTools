@@ -1,6 +1,16 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
-
+import { reactive, ref, onMounted } from 'vue'
+import {
+  IconMenuFold,
+  IconMenuUnfold,
+  IconApps,
+  IconBug,
+  IconBulb,
+} from '@arco-design/web-vue/es/icon';
+import router from "@/router/index"
+import { useAppStore } from '@/store'
+import { throwStatement } from '@babel/types';
+const appStore = useAppStore()
 const datav = reactive([
   { name: '常用', path: "/start/commuse" },
   { name: '圣遗物', path: "/start/holyrelic" },
@@ -11,29 +21,77 @@ const datav = reactive([
   { name: '角色属性', path: "/start/role" },
 ])
 
+const datav2 = reactive([
+  { name: 'WSS连接', path: "/start/login" },
+  { name: '控制台', path: "/start/consoled" },
+  { name: '在线人员', path: "/start/personnel" },
+])
+
+const GMTitle = ref("GM控制面板")
+
+
+function topath(path: string) {
+  router.push({ path: path })
+}
+
+const selectedKey = ref([""])
+onMounted(() => {
+  selectedKey.value = [router.currentRoute.value.fullPath]
+})
+
+watch(
+  () => appStore.isLogin,
+  () => {
+    const isLogin: boolean = appStore.isLogin
+    if (isLogin) {
+      GMTitle.value = "GM控制面板-已登录"
+    } else {
+      GMTitle.value = "GM控制面板"
+    }
+  },
+  {
+    immediate: true,
+  },
+)
+
+watch(
+  () => router.currentRoute.value.path,
+  (newValue, oldValue) => {
+  selectedKey.value = [newValue]
+  },
+  { immediate: true }
+)
 </script>
 <template>
   <div class="nav ">
-    <div v-for="(item, index) in datav" :key="index">
-      <router-link :to="item.path" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">
-        {{ item.name }}
-      </router-link>
-    </div>
+    <a-menu showCollapseButton :default-open-keys="['0', '1']" :selected-keys="selectedKey">
+      <a-sub-menu key="0">
+        <template #icon>
+          <IconApps></IconApps>
+        </template>
+        <template #title>控制台代码生成 </template>
+        <a-menu-item v-for="(item, index) in datav" :key="item.path" @click="topath(item.path)">
+          {{ item.name }}
+        </a-menu-item>
+      </a-sub-menu>
+      <a-sub-menu key="1">
+        <template #icon>
+          <IconBug></IconBug>
+        </template>
+        <template #title>{{ GMTitle }}</template>
+        <a-menu-item v-for="(item, index) in datav2" :key="item.path" @click="topath(item.path)">
+          {{ item.name }}
+        </a-menu-item>
+      </a-sub-menu>
+    </a-menu>
   </div>
 </template>
 <style lang="less" scoped>
 .nav {
-  height: 600px;
-  width: 120px;
-  border-right: 1px solid #d1d1cb;
-  padding-right: 30px;
+  height: calc(100vh - 57px);
 
   >div {
-    margin: 10px 0;
-    cursor: pointer;
-    font-size: 18px;
-    color: #000;
+    height: 100%;
   }
-
 }
 </style>

@@ -9,4 +9,5 @@ export interface AppState {
     menuWidth: number;
     globalSettings: boolean;
     [key: string]: unknown;
+    mesgData:string[];
 }

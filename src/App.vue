@@ -5,7 +5,7 @@
 import { title } from 'process'
 import { useAppStore } from './store/modules/app'
 
-import { ref, watch } from 'vue'
+import { ref, watch,onMounted } from 'vue'
 import { darkTheme } from 'naive-ui'
 const appStore = useAppStore()
 const apptheme = ref()
@@ -45,6 +45,13 @@ watch(
     immediate: true,
   },
 )
+
+onMounted(() => {
+  const WSS = localStorage.getItem("WSS")
+  if (WSS) {
+    appStore.socketConnect(WSS)
+  }
+})
 </script>
 
 <style>
@@ -54,7 +61,7 @@ watch(
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   background-color: var(--color-bg-1);
-  height: 100vh;
   overflow: hidden;
+  min-height: 100vh;
 }
 </style>

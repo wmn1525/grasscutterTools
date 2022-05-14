@@ -12,7 +12,7 @@ var uid = ref('')
 var holyrelicnamevalue = ref('')
 var holyrelicnmainvalue = ref('')
 
-var grade = ref('0')
+var grade = ref(0)
 var selectedValue = ref()
 var num = ref()
 

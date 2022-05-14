@@ -7,8 +7,7 @@ import { ref } from 'vue'
 import { useDark, useToggle } from '@vueuse/core';
 import { useAppStore, useUserStore } from '@/store';
 import { IconMoonFill, IconSunFill } from '@arco-design/web-vue/es/icon';
-
-
+import { IconClockCircle } from '@arco-design/web-vue/es/icon';
 const title = ref('I want to study typescript')
 // 检测浏览器系统主题
 const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -40,6 +39,9 @@ const ThemeChange = (val: string | number | boolean) => {
     document.documentElement.classList.remove('dark')
   }
 }
+
+const LoginHS = ref(true)
+
 </script>
 
 <template>
@@ -60,12 +62,12 @@ const ThemeChange = (val: string | number | boolean) => {
                       Grasscutter-docs-zh_CN
                     </a>
                   </li>
-                  <li>
-                    <router-link
-                      to="/login"
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                    >Login</router-link>
+                  <li v-if="LoginHS">
+                    <router-link to="/start/login" class="hover:text-sky-500 dark:hover:text-sky-400">
+                      Console
+                    </router-link>
                   </li>
+
                 </ul>
               </nav>
               <div class="flex items-center pl-6 ml-6 border-l border-slate-200 dark:border-slate-800">
