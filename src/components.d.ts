@@ -17,7 +17,6 @@ declare module '@vue/runtime-core' {
     ASelect: typeof import('@arco-design/web-vue')['Select']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
     ATable: typeof import('@arco-design/web-vue')['Table']
-    ATableColumn: typeof import('@arco-design/web-vue')['TableColumn']
     ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
     Footer: typeof import('./components/footer/index.vue')['default']
     Header: typeof import('./components/Header/index.vue')['default']
