@@ -8,7 +8,7 @@ const { text, isSupported, copy } = useClipboard()
 
 var value2 = ref()
 var value3 = ref('/give')
-var uid = ref()
+var uid = ref("@")
 var num = ref()
 
 const value = computed(() => {

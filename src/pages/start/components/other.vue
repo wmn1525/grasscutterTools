@@ -9,38 +9,32 @@ const { text, isSupported, copy } = useClipboard()
 const options = reactive([
   {
     title: '治疗队伍中所有角色',
-    isuse: '仅客户端',
-    value: '/heal',
+    value: 'heal',
   },
   {
     title: '列出在线玩家',
-    isuse: '均可使用',
-    value: '/list',
+    value: 'list',
   },
   {
     title: '获取当前坐标',
-    isuse: '仅客户端',
-    value: '/position',
+    value: 'position',
   },
   {
     title: '重载服务器配置',
-    isuse: '均可使用',
-    value: '/reload',
+    value: 'reload',
   },
   {
     title: '重启服务端',
     isuse: '均可使用',
-    value: '/restart',
+    value: 'restart',
   },
   {
     title: '停止服务器',
-    isuse: '均可使用',
-    value: '/stop',
+    value: 'stop',
   },
   {
     title: '世界等级8',
-    isuse: '仅客户端',
-    value: '/setworldlevel 8',
+    value: 'setworldlevel 8',
   },
 ])
 const message = Message

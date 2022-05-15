@@ -57,7 +57,8 @@ export const useAppStore = defineStore(
       send: (data: string | ArrayBuffer | Blob, useBuffer?: boolean | undefined) => { },
       close: () => { },
       open: () => { },
-      mesgData: [""]
+      mesgData: [""],
+      PlayerList: []
     }),
     getters: {},
     actions: {
@@ -117,7 +118,7 @@ export const useAppStore = defineStore(
                     var label = ""
                     if (key == "getAllocatedMemory") {
                       label = "系统内存"
-                      element = (element/1024/1024).toFixed(2) + "M"
+                      element = (element / 1024 / 1024).toFixed(2) + "M"
                     }
                     if (key == "playerCount") {
                       label = "在线玩家数量"
@@ -131,7 +132,7 @@ export const useAppStore = defineStore(
                     }
                     if (key == "getFreeMemory") {
                       label = "已用内存"
-                      element = (element/1024/1024).toFixed(2) + "M"
+                      element = (element / 1024 / 1024).toFixed(2) + "M"
                     }
                     data.push({
                       label: label,
@@ -175,8 +176,11 @@ export const useAppStore = defineStore(
 
               case "cmd_msg":
                 this.mesgData.push(parse.data)
+                Message.info(parse.data)
                 break;
-
+              case "PlayerList":
+                this.PlayerList = parse.data
+                break;
               default:
                 break;
             }

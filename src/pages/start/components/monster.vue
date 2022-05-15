@@ -10,9 +10,10 @@ const { text, isSupported, copy } = useClipboard()
 var value2 = ref(21010101)
 var grade = ref(80)
 var num = ref(10)
+var uid = ref('@')
 
 const value = computed(() => {
-  return `/spawn ${value2.value} ${num.value} ${grade.value}`
+  return `spawn ${uid.value} ${value2.value} ${num.value} ${grade.value}`
 })
 const options = reactive(monster)
 const message = Message
@@ -28,28 +29,20 @@ function copyvalue() {
 <template>
   <div class="commuse">
     <div class="commuse-item">
+      <div class="text-slate-900 dark:text-slate-100"> UID: </div>
+      <a-input v-model="uid" placeholder="请输入UID" allow-clear />
+    </div>
+    <div class="commuse-item">
       <div class="text-slate-900 dark:text-slate-100"> 怪物: </div>
       <a-cascader allow-search v-model="value2" :options="options" placeholder="" filterable />
     </div>
     <div class="commuse-item">
       <div class="text-slate-900 dark:text-slate-100"> 等级: </div>
-      <a-input-number
-        v-model="grade"
-        placeholder="请输入数量"
-        mode="button"
-        size="large"
-        class="input-demo"
-      />
+      <a-input-number v-model="grade" placeholder="请输入数量" mode="button" size="large" class="input-demo" />
     </div>
     <div class="commuse-item">
       <div class="text-slate-900 dark:text-slate-100"> 数量: </div>
-      <a-input-number
-        v-model="num"
-        placeholder="请输入数量"
-        mode="button"
-        size="large"
-        class="input-demo"
-      />
+      <a-input-number v-model="num" placeholder="请输入数量" mode="button" size="large" class="input-demo" />
     </div>
     <div class="generate">
       <a-input v-model="value" placeholder="" />
@@ -70,7 +63,7 @@ function copyvalue() {
   color: #000;
   margin: 18px 0;
 
-  > div {
+  >div {
     &:nth-child(1) {
       width: 150px;
       text-align: right;

@@ -7,11 +7,11 @@ import { Message } from '@arco-design/web-vue'
 const { text, isSupported, copy } = useClipboard()
 
 var value2 = ref(223)
-var uid = ref('')
+var uid = ref('@')
 var num = ref(1000)
 
 const value = computed(() => {
-  return `/give ${uid.value} ${value2.value} ${num.value}`
+  return `give ${uid.value} ${value2.value} ${num.value}`
 })
 const options = reactive([
   {

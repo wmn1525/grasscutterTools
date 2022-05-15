@@ -6,14 +6,14 @@ import { Message } from '@arco-design/web-vue'
 import weapon from './json/weapon.json'
 const { text, isSupported, copy } = useClipboard()
 
-var uid = ref(1)
+var uid = ref("@")
 var value2 = ref(12510)
 var num = ref(5)
 var grade = ref(90)
 var refined = ref(5)
 
 const value = computed(() => {
-  return `/give ${uid.value} ${value2.value} ${num.value} ${grade.value} ${refined.value}`
+  return `give ${uid.value} ${value2.value} ${num.value} ${grade.value} ${refined.value}`
 })
 const options = reactive(weapon)
 

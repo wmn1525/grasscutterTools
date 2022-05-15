@@ -8,7 +8,7 @@ import holyrelicx from './json/holyrelicnx.json'
 import { Message } from '@arco-design/web-vue'
 const { text, isSupported, copy } = useClipboard()
 
-var uid = ref('')
+var uid = ref('@')
 var holyrelicnamevalue = ref('')
 var holyrelicnmainvalue = ref('')
 
@@ -23,7 +23,7 @@ const value = computed(() => {
       xct = xct + ` ${k.value},${k.num}`
     }
   })
-  return `/giveart ${uid.value} ${holyrelicnamevalue.value} ${holyrelicnmainvalue.value}${xct} ${
+  return `giveart ${uid.value} ${holyrelicnamevalue.value} ${holyrelicnmainvalue.value}${xct} ${
     grade.value + 1
   }`
 })
