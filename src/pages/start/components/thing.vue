@@ -7,7 +7,7 @@ import { Message } from '@arco-design/web-vue'
 const { text, isSupported, copy } = useClipboard()
 
 var value2 = ref()
-var value3 = ref('/give')
+var value3 = ref('give')
 var uid = ref("@")
 var num = ref()
 
@@ -18,11 +18,11 @@ const options = reactive(thing)
 const options2 = reactive([
   {
     label: '给予指定玩家一定数量的物品',
-    value: '/give',
+    value: 'give',
   },
   {
     label: '在指定玩家周围掉落指定物品',
-    value: '/drop',
+    value: 'drop',
   },
 ])
 const message = Message
