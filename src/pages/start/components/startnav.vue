@@ -22,9 +22,15 @@ const datav = reactive([
 ])
 
 const datav2 = reactive([
-  { name: 'WSS连接', path: "/start/login" },
+  { name: 'WSS连接', path: "/start/wss" },
   { name: '控制台', path: "/start/consoled" },
   { name: '在线人员', path: "/start/personnel" },
+])
+
+const datav3 = reactive([
+  { name: '登录获取Tocken', path: "/start/login" },
+  { name: '注册', path: "/start/register" },
+  { name: '修改密码', path: "/start/changepassword" },
 ])
 
 const GMTitle = ref("GM控制面板")
@@ -57,14 +63,14 @@ watch(
 watch(
   () => router.currentRoute.value.path,
   (newValue, oldValue) => {
-  selectedKey.value = [newValue]
+    selectedKey.value = [newValue]
   },
   { immediate: true }
 )
 </script>
 <template>
   <div class="nav ">
-    <a-menu showCollapseButton :default-open-keys="['0', '1']" :selected-keys="selectedKey">
+    <a-menu showCollapseButton :default-open-keys="['0', '1', '2']" :selected-keys="selectedKey">
       <a-sub-menu key="0">
         <template #icon>
           <IconApps></IconApps>
@@ -80,6 +86,15 @@ watch(
         </template>
         <template #title>{{ GMTitle }}</template>
         <a-menu-item v-for="(item, index) in datav2" :key="item.path" @click="topath(item.path)">
+          {{ item.name }}
+        </a-menu-item>
+      </a-sub-menu>
+      <a-sub-menu key="2">
+        <template #icon>
+          <IconApps></IconApps>
+        </template>
+        <template #title>GCAuth</template>
+        <a-menu-item v-for="(item, index) in datav3" :key="item.path" @click="topath(item.path)">
           {{ item.name }}
         </a-menu-item>
       </a-sub-menu>

@@ -40,7 +40,7 @@ let constantRoutes = [
         component: () => import('@/pages/start/components/weapon.vue'),
       },
       {
-        path: "/start/login",
+        path: "/start/wss",
         component: () => import('@/pages/login/index.vue'),
       },
       {
@@ -50,6 +50,18 @@ let constantRoutes = [
       {
         path: "/start/personnel",
         component: () => import('@/pages/start/components/personnel.vue'),
+      },
+      {
+        path: "/start/login",
+        component: () => import('@/pages/start/GCAuth/login.vue'),
+      },
+      {
+        path: "/start/register",
+        component: () => import('@/pages/start/GCAuth/register.vue'),
+      },
+      {
+        path: "/start/changepassword",
+        component: () => import('@/pages/start/GCAuth/changepassword.vue'),
       }
     ]
   }
