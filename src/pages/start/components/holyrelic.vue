@@ -6,7 +6,9 @@ import holyrelicname from './json/holyrelicname.json'
 import holyrelicnmain from './json/holyrelicnmain.json'
 import holyrelicx from './json/holyrelicnx.json'
 import { Message } from '@arco-design/web-vue'
+import { useAppStore } from '@/store/modules/app'
 const { text, isSupported, copy } = useClipboard()
+const appStore = useAppStore()
 
 var uid = ref('@')
 var holyrelicnamevalue = ref('')
@@ -23,9 +25,8 @@ const value = computed(() => {
       xct = xct + ` ${k.value},${k.num}`
     }
   })
-  return `giveart ${uid.value} ${holyrelicnamevalue.value} ${holyrelicnmainvalue.value}${xct} ${
-    grade.value + 1
-  }`
+  return `giveart ${uid.value} ${holyrelicnamevalue.value} ${holyrelicnmainvalue.value}${xct} ${grade.value + 1
+    }`
 })
 const options = reactive(holyrelicname)
 
@@ -50,6 +51,7 @@ function copyvalue() {
     message.success(`已复制${value.value}`)
   }
 }
+const send: any = inject("send")
 </script>
 
 <template>
@@ -61,24 +63,12 @@ function copyvalue() {
 
     <div class="commuse-item">
       <div class="text-slate-900 dark:text-slate-100"> 圣遗物: </div>
-      <a-cascader
-        allow-search
-        v-model="holyrelicnamevalue"
-        :options="options"
-        placeholder="请输入物品"
-        filterable
-      />
+      <a-cascader allow-search v-model="holyrelicnamevalue" :options="options" placeholder="请输入物品" filterable />
     </div>
 
     <div class="commuse-item">
       <div class="text-slate-900 dark:text-slate-100"> 主属性: </div>
-      <a-cascader
-        allow-search
-        v-model="holyrelicnmainvalue"
-        :options="options2"
-        placeholder="请输入主属性"
-        filterable
-      />
+      <a-cascader allow-search v-model="holyrelicnmainvalue" :options="options2" placeholder="请输入主属性" filterable />
       <!-- <n-select v-model:value="holyrelicnmainvalue" filterable placeholder="选择圣遗物主属性" :options="options2" /> -->
     </div>
 
@@ -105,7 +95,7 @@ function copyvalue() {
     <div class="generate">
       <a-input v-model="value" placeholder="" />
       <a-button type="outline" @click="copyvalue">复制</a-button>
-      <!-- <a-button type="outline" @click="copyvalue">执行</a-button> -->
+      <a-button type="outline" v-if="appStore.isLogin" @click="send(value)">执行</a-button>
     </div>
   </div>
 </template>
@@ -121,7 +111,7 @@ function copyvalue() {
   color: #000;
   margin: 18px 0;
 
-  > div {
+  >div {
     &:nth-child(1) {
       width: 150px;
       text-align: right;
@@ -140,13 +130,15 @@ function copyvalue() {
   height: 300px;
   width: 100%;
   overflow-y: auto;
+
   .smallho-item {
     margin: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    > div {
+
+    >div {
       &:nth-child(3) {
         width: 80px;
       }

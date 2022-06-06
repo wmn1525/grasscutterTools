@@ -18,7 +18,7 @@ const datav = reactive([
   { name: '其它', path: "/start/other" },
   { name: '武器', path: "/start/weapon" },
   { name: '物品', path: "/start/thing" },
-  { name: '角色属性', path: "/start/role" },
+  // { name: '角色属性', path: "/start/role" },
 ])
 
 const datav2 = reactive([
@@ -93,7 +93,7 @@ watch(
         <template #icon>
           <IconApps></IconApps>
         </template>
-        <template #title>GCAuth</template>
+        <template #title>GCAuth-暂未实现功能</template>
         <a-menu-item v-for="(item, index) in datav3" :key="item.path" @click="topath(item.path)">
           {{ item.name }}
         </a-menu-item>

@@ -3,8 +3,10 @@
 import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { Message } from '@arco-design/web-vue'
+import { useAppStore } from '@/store/modules/app'
 
 const { text, isSupported, copy } = useClipboard()
+const appStore = useAppStore()
 
 const options = reactive([
   {
@@ -45,6 +47,7 @@ function copyvalue(value: string) {
     message.success(`已复制${value}`)
   }
 }
+const send: any = inject("send")
 </script>
 
 <template>
@@ -56,7 +59,7 @@ function copyvalue(value: string) {
       </div>
       <div>
         <a-button type="outline" @click="copyvalue(item.value)">复制</a-button>
-        <!-- <a-button type="outline" @click="copyvalue(item.value)">执行</a-button> -->
+        <a-button type="outline" v-if="appStore.isLogin" @click="send(item.value)">执行</a-button>
       </div>
     </div>
   </div>
@@ -66,13 +69,13 @@ function copyvalue(value: string) {
   width: 500px;
   margin: auto;
 
-  > div {
+  >div {
     margin: 10px 0;
     display: flex;
     align-items: center;
     color: #000;
 
-    > div {
+    >div {
       &:nth-child(1) {
         width: 130px;
       }

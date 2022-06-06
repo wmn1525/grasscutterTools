@@ -3,9 +3,11 @@
 import { reactive, ref, computed } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { Message } from '@arco-design/web-vue'
+import { useAppStore } from '@/store/modules/app'
 
 import monster from './json/monster.json'
 const { text, isSupported, copy } = useClipboard()
+const appStore = useAppStore()
 
 var value2 = ref(21010101)
 var grade = ref(80)
@@ -24,6 +26,7 @@ function copyvalue() {
     message.success(`已复制${value.value}`)
   }
 }
+const send: any = inject("send")
 </script>
 
 <template>
@@ -47,7 +50,7 @@ function copyvalue() {
     <div class="generate">
       <a-input v-model="value" placeholder="" />
       <a-button type="outline" @click="copyvalue">复制</a-button>
-      <!-- <a-button type="outline" @click="copyvalue">执行</a-button> -->
+      <a-button type="outline" v-if="appStore.isLogin" @click="send(value)">执行</a-button>
     </div>
   </div>
 </template>
