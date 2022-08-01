@@ -13,7 +13,7 @@ var uid = ref('@')
 var num = ref(1000)
 
 const value = computed(() => {
-  return `give ${uid.value} ${value2.value} ${num.value}`
+  return `give ${uid.value} ${value2.value} x${num.value}`
 })
 const options = reactive([
   {

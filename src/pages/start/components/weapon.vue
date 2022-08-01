@@ -15,7 +15,7 @@ var grade = ref(90)
 var refined = ref(5)
 
 const value = computed(() => {
-  return `give ${uid.value} ${value2.value} ${num.value} ${grade.value} ${refined.value}`
+  return `give ${uid.value} ${value2.value} x${num.value} lv${grade.value} r${refined.value}`
 })
 const options = reactive(weapon)
 

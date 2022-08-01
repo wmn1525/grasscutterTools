@@ -14,7 +14,7 @@ var uid = ref("@")
 var num = ref()
 
 const value = computed(() => {
-  return `${value3.value} ${uid.value} ${value2.value} ${num.value}`
+  return `${value3.value} ${uid.value} ${value2.value} x${num.value}`
 })
 const options = reactive(thing)
 const options2 = reactive([

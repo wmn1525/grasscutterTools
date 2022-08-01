@@ -25,8 +25,7 @@ const value = computed(() => {
       xct = xct + ` ${k.value},${k.num}`
     }
   })
-  return `giveart ${uid.value} ${holyrelicnamevalue.value} ${holyrelicnmainvalue.value}${xct} ${grade.value + 1
-    }`
+  return `give ${uid.value} ${holyrelicnamevalue.value} lv${grade.value} ${holyrelicnmainvalue.value}${xct} `
 })
 const options = reactive(holyrelicname)
 

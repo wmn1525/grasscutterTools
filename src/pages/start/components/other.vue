@@ -10,33 +10,37 @@ const appStore = useAppStore()
 
 const options = reactive([
   {
-    title: '治疗队伍中所有角色',
-    value: 'heal',
+    title: '无敌',
+    value: 'prop god on',
   },
   {
-    title: '列出在线玩家',
-    value: 'list',
+    title: '无限体力',
+    value: 'prop ns on',
   },
   {
-    title: '获取当前坐标',
-    value: 'position',
+    title: '无限能量',
+    value: 'prop ue on',
   },
   {
-    title: '重载服务器配置',
-    value: 'reload',
+    title: '治疗',
+    value: 'h',
   },
   {
-    title: '重启服务端',
-    isuse: '均可使用',
-    value: 'restart',
+    title: '设置纪行等级',
+    // isuse: '均可使用',
+    value: 'prop bp 50',
   },
   {
-    title: '停止服务器',
-    value: 'stop',
+    title: '一键解锁深渊',
+    value: 'prop ut 12',
   },
   {
     title: '世界等级8',
-    value: 'setworldlevel 8',
+    value: 'prop wl 8',
+  },
+  {
+    title: '全队充能',
+    value: 'spawn 2008 25',
   },
 ])
 const message = Message
